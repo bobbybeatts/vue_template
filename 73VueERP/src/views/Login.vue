@@ -1,9 +1,6 @@
 <template>
-
   <div class="auth-wrapper auth-v2">
-
     <b-row class="auth-inner m-0">
-
       <!-- Brand logo-->
       <b-link class="brand-logo">
         <vuexy-logo />
@@ -18,7 +15,9 @@
         lg="8"
         class="d-none d-lg-flex align-items-center p-5"
       >
-        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
+        <div
+          class="w-100 d-lg-flex align-items-center justify-content-center px-5"
+        >
           <b-img
             fluid
             :src="imgUrl"
@@ -64,13 +63,12 @@
                   #default="{ errors }"
                   name="companyCode"
                 >
-
                   <div style="display: flex">
                     <b-form-input
                       id="company-code"
                       v-model="companyCode"
                       disabled
-                      :state="errors.length > 0 ? false:null"
+                      :state="errors.length > 0 ? false : null"
                       name="companyCode"
                       placeholder="companyCode"
                     />
@@ -116,7 +114,7 @@
                       id="searchWorkplace"
                       v-model="workplaceCode"
                       disabled
-                      :state="errors.length > 0 ? false:null"
+                      :state="errors.length > 0 ? false : null"
                       name="searchWorkplace"
                       placeholder="searchWorkplace"
                     />
@@ -162,7 +160,7 @@
                   <b-form-input
                     id="login-empCode"
                     v-model="empCode"
-                    :state="errors.length > 0 ? false:null"
+                    :state="errors.length > 0 ? false : null"
                     name="login-email"
                     placeholder="empCode"
                   />
@@ -174,7 +172,7 @@
               <b-form-group>
                 <div class="d-flex justify-content-between">
                   <label for="login-password">Password</label>
-                  <b-link :to="{name:'auth-forgot-password-v2'}">
+                  <b-link :to="{ name: 'auth-forgot-password-v2' }">
                     <small>Forgot Password?</small>
                   </b-link>
                 </div>
@@ -185,12 +183,12 @@
                 >
                   <b-input-group
                     class="input-group-merge"
-                    :class="errors.length > 0 ? 'is-invalid':null"
+                    :class="errors.length > 0 ? 'is-invalid' : null"
                   >
                     <b-form-input
                       id="login-password"
                       v-model="password"
-                      :state="errors.length > 0 ? false:null"
+                      :state="errors.length > 0 ? false : null"
                       class="form-control-merge"
                       :type="passwordFieldType"
                       name="login-password"
@@ -233,7 +231,7 @@
 
           <b-card-text class="text-center mt-2">
             <span>New on our platform? </span>
-            <b-link :to="{name:'page-auth-register-v2'}">
+            <b-link :to="{ name: 'page-auth-register-v2' }">
               <span>&nbsp;Create an account</span>
             </b-link>
           </b-card-text>
@@ -360,8 +358,11 @@ export default {
     this.GET_COMPANY_CODE()
   },
   methods: {
-
-    ...mapActions('auth', ['GET_COMPANY_CODE', 'GET_WORKPLACE_CODE', 'AUTHORITY_REQUEST']),
+    ...mapActions('auth', [
+      'GET_COMPANY_CODE',
+      'GET_WORKPLACE_CODE',
+      'AUTHORITY_REQUEST',
+    ]),
 
     companyCodeClick(payload) {
       console.log('companyClick')
@@ -376,7 +377,10 @@ export default {
     },
     async handleLogin() {
       const loginInfo = {
-        companyCode: this.companyCode, workplaceCode: this.workplaceCode, empCode: this.empCode, password: this.password,
+        companyCode: this.companyCode,
+        workplaceCode: this.workplaceCode,
+        empCode: this.empCode,
+        password: this.password,
       }
       const result = await this.AUTHORITY_REQUEST(loginInfo)
       if (result.empInfo === undefined) {
@@ -399,5 +403,5 @@ export default {
 .custom {
   width: 230px !important;
 }
-@import '@core/scss/vue/pages/page-auth.scss';
+@import "@core/scss/vue/pages/page-auth.scss";
 </style>

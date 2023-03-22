@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
+        "allowJs": true,
         "baseUrl": ".",
         "paths": {
             "@/*": ["src/*"],
             "@core/*": ["src/@core/*"]
-        }
+        },
+        
     }
 }
